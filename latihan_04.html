@@ -1,0 +1,59 @@
+<html>
+
+<head>
+    <title>Object InnerHtml</title>
+    <script language="JavaScript">
+        function createXMLHttpObject() {
+            var xmlhttp = false;
+
+            try {
+                xmlhttp = new ActiveXObject("Msxm12.XMLHTTP");
+            } catch (e) {
+                try {
+                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                } catch (e) {
+                    xmlhttp = false;
+                }
+            }
+
+            if (!xmlhttp && typeof XMLHttpRequest != 'undefined') {
+                xmlhttp = new XMLHttpRequest();
+            }
+
+            if (!xmlhttp) {
+                alert("Terjadi kesalahan saat pembuatan XMLHttpRequest object!");
+            } else {
+                alert("XMLHttpRequest berhasil dibuat.");
+            }
+            console.log(xmlhttp);
+
+            return xmlhttp;
+        }
+
+        function requestContent(){
+            reqObj = createXMLHttpObject();
+
+            // berikut adalah local server milik saya menggunakan liveServer extension
+            reqObj.open("GET", "http://127.0.0.1:5500/dataLoad.html", true);
+
+            // reqObj.open("GET", "http://localhost/web/dataLoad.html", true);
+            
+            reqObj.onreadystatechange = function(){
+                if(reqObj.readyState == 4 && reqObj.status == 200){
+                    document.getElementById("divContent").innerHTML = reqObj.responseText;
+                } else {
+                    document.getElementById("divContent").innerHTML = "Loading..";
+                }
+            }
+            reqObj.send(null);
+        }
+    </script>
+</head>
+
+<body>
+    <a href="#" onclick="requestContent()">Klik disini untuk load data.</a>
+    <div id="divContent">
+    </div>
+</body>
+
+</html>

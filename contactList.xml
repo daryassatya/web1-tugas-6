@@ -1,0 +1,10 @@
+<xml id="contactList">
+    <contact>
+        <name>Rajiva</name>
+        <address>JL. Taman Siswa Yogyakarta</address>
+        <phone type="mobile">0852 9233 1xxx</phone>
+        <phone type="home">0274 212 404</phone>
+        <phone type="office">0274 313 501</phone>
+        <email>rajiva.root@gmail.com</email>
+    </contact>
+</xml>
